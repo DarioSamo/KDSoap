@@ -52,12 +52,10 @@ include(InstallLocation)
 
 # try Qt5 first, and prefer that (if found), but only if not disabled via option
 if(NOT ${PROJECT_NAME}_ENFORCE_QT4_BUILD)
-  find_package(Qt5Core QUIET)
+  find_package(Qt5 COMPONENTS Core Network Widgets Xml Gui REQUIRED)
 endif()
 
 if(Qt5Core_FOUND)
-  find_package(Qt5Network REQUIRED)
-  find_package(Qt5Widgets CONFIG)
   set(QT_LIBRARIES Qt5::Core)
   set(QT_USE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Qt5Portability.cmake")
 
